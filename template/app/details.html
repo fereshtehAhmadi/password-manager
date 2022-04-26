@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Ditails {% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-dark bg-dark navbar navbar-expand-lg navbar-light bg-light" style="height: 100%; margin: 10px;">
+    <a class="navbar-brand" style="margin: 10px;" href="{% url 'list' %}">home</a>
+    <a class="navbar-brand" style="margin: 10px; margin-left: 20px;" href="{% url 'add' %}">add</a>
+</nav>
+
+<div class="card" style="width: 18rem; margin: 20px;">
+    <div class="card-body">
+        {% for obj in details %}
+      <h2 class="card-title">{{ obj.title }}</h2>
+      <p class="card-text" >{{ obj.username }}</p>
+      <p class="card-text">{{ obj.password }}</p>
+      <a href="{% url 'edit' obj.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
+      <a href="{% url 'delete' obj.id %}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
+    
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

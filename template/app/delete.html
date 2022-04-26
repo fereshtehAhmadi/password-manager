@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete {% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-dark bg-dark navbar navbar-expand-lg navbar-light bg-light" style="height: 100%; margin: 10px;">
+  <a class="navbar-brand" style="margin: 10px;" href="{% url 'list' %}">home</a>
+  <a class="navbar-brand" style="margin: 10px; margin-left: 20px;" href="{% url 'add' %}">add</a>
+</nav>
+
+<div class="card" style="width: 18rem; margin: 20px;">
+  <div class="card-body">
+    {% for obj in delete %}
+    <h5 class="card-title">delete </h5>
+    <hr>
+    <p class="card-text" >Are you sure of delete this item?</p>
+    <form action="" method="POST">
+    <button type="button" class="btn btn-danger">Delete</button>
+  </form>
+    <a href="{% url 'details' obj.id %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancle</a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

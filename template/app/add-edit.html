@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} {% if edit %} Edit {% else %} Index {% endif %} {% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-dark bg-dark navbar navbar-expand-lg navbar-light bg-light" style="height: 100%; margin: 10px;">
+    <a class="navbar-brand" style="margin: 10px;" href="{% url 'list' %}">home</a>
+  </nav>
+  <form method="post">
+    {% csrf_token %}
+    <div style="margin: 10px;">
+    <div class="form-group col-md-6">
+      <label for="exampleInputEmail1">title</label>
+      <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="title" aria-describedby="emailHelp" placeholder="title" {% if edit %} value="{{ obj.title }}" {% endif %} required>
+    </div>
+    <br>
+    <div class="form-group col-md-6">
+        <label for="exampleInputEmail1">username</label>
+        <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" placeholder="username" {% if edit %} value="{{ obj.username }}" {% endif %} required>
+      </div>
+      <br>
+    <div class="form-group col-md-6">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="text" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password" {% if edit %} value="{{ obj.password }}" {% endif %}  required>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}
