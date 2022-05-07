@@ -10,14 +10,13 @@
 
 <div class="card" style="width: 18rem; margin: 20px;">
     <div class="card-body">
-        {% for obj in details %}
-      <h2 class="card-title">{{ obj.title }}</h2>
-      <p class="card-text" >{{ obj.username }}</p>
-      <p class="card-text">{{ obj.password }}</p>
-      <a href="{% url 'edit' obj.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
-      <a href="{% url 'delete' obj.id %}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
+
+      <h2 class="card-title">{{ details.title }}</h2>
+      <p class="card-text" >{{ details.username }}</p>
+      <p class="card-text">{{ details.password }}</p>
+      <a href="{% url 'edit' details.id %}" class="btn btn-primary " role="button" aria-pressed="true">Edit</a>
+      <a href="{% url 'delete' details.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete</a>
     
-      {% endfor %}
     </div>
   </div>
 {% endblock %}

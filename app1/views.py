@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404
 from app1.models import PasswordModel
 
 
@@ -25,7 +25,7 @@ def password_list(request):
 
 def details_userpassword(request, pk):
     context = {
-        'details': get_list_or_404(PasswordModel, id=pk),
+        'details': get_object_or_404(PasswordModel, id=pk),
     }
     return render(request, 'app1/details.html', context)
 
@@ -41,19 +41,20 @@ def edit_userpassword(request, pk):
         return redirect('list')
         
     context = {
-        'edit': get_list_or_404(PasswordModel, id=pk),
+        'edit': get_object_or_404(PasswordModel, id=pk),
     }
     return render(request, 'app1/add-edit.html', context)
 
 
 def delete_userpassword(request, pk):
+    obj = get_object_or_404(PasswordModel, id=pk)
+    
     if request.method == 'POST':
-        obj = emp = Employee.objects.get(pk = id)
         obj.delete()
         return redirect('list')
     
     context = {
-        'delete': get_list_or_404(PasswordModel, id=pk),
+        'delete': obj,
     }
     return render(request, 'app1/delete.html', context)
 

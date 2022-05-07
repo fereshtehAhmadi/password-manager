@@ -8,6 +8,7 @@
     <a class="navbar-brand" style="margin: 10px; margin-left: 20px;" href="{% url 'add' %}">add</a>
 </nav>
 
+{% if passwords %}
 <div style="margin: 20px;">
 <table class="table">
     <thead class="thead-dark">
@@ -30,4 +31,5 @@
     </tbody>
   </table>
 </div>
+{% endif %}
 {% endblock %}
